@@ -25,7 +25,7 @@
         replacejscssfile(cible.getAttribute("src"), link, "js");
       }
 
-      function showLessons() {
+      function showLessons () {
         const lessons = ["tut1", "tut2", "tut3"];
         const liless = [...Array(3)].map(
           (_, item) => `<li class="js" src=${less(item + 1)}>L${item}</li>`
