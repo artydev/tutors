@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tutors</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <ul id="navlessons"></ul>
+    <div id="app"></div>
+    <script id="cible" src="index.js"></script>
+    <script type="module">
+      import { replacejscssfile } from "./replacer.js";
+      import { wickedElements } from "./we.js";
+
+      const { define } = wickedElements;
+
+      const less = (num) => `./tutorials/tut${num}/index.js`;
+
+      function rs(link) {
+        app.innerHTML = "waiting....";
+        replacejscssfile(cible.getAttribute("src"), link, "js");
+      }
+
+      function showLessons() {
+        const lessons = ["tut1", "tut2", "tut3"];
+        const liless = [...Array(3)].map(
+          (_, item) => `<li class="js" src=${less(item + 1)}>L${item}</li>`
+        );
+        navlessons.innerHTML = liless.join("");
+      }
+
+      define(".js", {
+        onclick() {
+          rs(this.element.getAttribute("src"));
+        }
+      });
+
+      showLessons();
+    </script>
+  </body>
+</html>
